@@ -1,4 +1,5 @@
 const generator = require(`yeoman-generator`);
+const {isPlainObject} = require('lodash');
 
 const {
   spawnSync: spawn,
@@ -38,16 +39,24 @@ module.exports = generator.Base.extend({
   },
 
   _copyFile(f) {
+    let from = null;
+    let to = null;
+    if (isPlainObject(f)) {
+      from = f.from;
+      to = f.to;
+    } else {
+      from = f;
+      to = f;
+    }
 
     this.fs.copyTpl(
-      this.templatePath(f),
-      this.destinationPath(f),
+      this.templatePath(from),
+      this.destinationPath(to),
       this.props,
       {
         interpolate: /<%=([\s\S]+?)%>/g
       }
     );
-
   },
 
   _createDir(d) {
@@ -162,9 +171,10 @@ module.exports = generator.Base.extend({
         `.editorconfig`
       ];
 
-      const npm = [
-        `package.json`
-      ];
+      const npm = [{
+        from: `_package.json`,
+        to: `package.json`
+      }];
 
       const files = [
         ...eslint,
