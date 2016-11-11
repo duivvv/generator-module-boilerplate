@@ -1,5 +1,4 @@
 const generator = require(`yeoman-generator`);
-const {isPlainObject} = require(`lodash`);
 
 const {
   spawnSync: spawn,
@@ -40,8 +39,6 @@ module.exports = generator.Base.extend({
 
   _copyFile(f) {
     this.fs.copyTpl(
-      // isPlainObject(f) ? this.templatePath(f.from) : this.templatePath(f),
-      // isPlainObject(f) ? this.destinationPath(f.to) : this.destinationPath(f),
       typeof f === `object` ? this.templatePath(f.from) : this.templatePath(f),
       typeof f === `object` ? this.destinationPath(f.to) : this.destinationPath(f),
       this.props,
