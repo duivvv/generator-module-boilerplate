@@ -1,0 +1,8 @@
+[libs]
+./node_modules/fbjs/flow/lib
+
+[options]
+module.system.node.resolve_dirname=node_modules
+
+suppress_type=$FlowIssue
+suppress_type=$FlowFixMe

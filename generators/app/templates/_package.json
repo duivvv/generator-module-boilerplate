@@ -60,11 +60,14 @@
     "babel-cli": "^6.18.0",
     "babel-core": "^6.17.0",
     "babel-plugin-add-module-exports": "^0.2.1",
+    <% if(flow) { >"babel-plugin-transform-flow-strip-types": "^6.18.0",<% } %>
     "babel-preset-es2015": "^6.16.0",
     "cross-env": "^3.1.3",
     "eslint": "^3.7.1",
     "eslint-config-devine": "^1.5.0",
     "eslint-plugin-babel": "^3.3.0",
+    <% if(flow) { >"eslint-plugin-flowtype": "^2.25.0",<% } %>
+    <% if(flow) { >"flow-bin": "^0.35.0"<% } %>
     "jest": "^16.0.1",
     "rimraf": "^2.5.4",
     "release-it": "^2.5.1",
