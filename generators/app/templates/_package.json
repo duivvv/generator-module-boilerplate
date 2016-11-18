@@ -68,7 +68,6 @@
     "eslint": "^3.7.1",
     "eslint-config-devine": "^1.5.0",
     "eslint-plugin-babel": "^3.3.0",
-    <% if(flow) { %>"eslint-plugin-flowtype": "^2.25.0",<% } %>
     <% if(flow) { %>"flow-bin": "^0.35.0",<% } %>
     "jest": "^16.0.1",
     "rimraf": "^2.5.4",
