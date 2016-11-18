@@ -1,8 +1,12 @@
+[ignore]
+.*/__tests__/.*
+
 [libs]
 ./node_modules/fbjs/flow/lib
 
 [options]
+module.name_mapper='^\(.*\)$' -> '<PROJECT_ROOT>/\1'
 module.system.node.resolve_dirname=node_modules
 
-suppress_type=$FlowIssue
-suppress_type=$FlowFixMe
+suppress_comment=\\(.\\|\n\\)*\\$FlowIssue
+suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
