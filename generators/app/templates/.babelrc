@@ -1,20 +1,19 @@
 {
+  <% if(flow) {%>"plugins": [
+    ["transform-flow-strip-types"]
+  ],<% } %>
   "env": {
     "cjs": {
       "presets": [
         ["es2015", {"loose": true}]
       ],
       "plugins": [
-        ["add-module-exports"],
-        <% if(flow) {%>["transform-flow-strip-types"]<% } %>
+        ["add-module-exports"]
       ]
     },
     "es": {
       "presets": [
         ["es2015", {"loose": true, "modules": false}]
-      ],
-      "plugins": [
-        <% if(flow) {%>["transform-flow-strip-types"]<% } %>
       ]
     }
   }

@@ -143,7 +143,7 @@ module.exports = generator.Base.extend({
       type: `confirm`,
       name: `flow`,
       default: false,
-      message: `Do you need flow for type checking?`,
+      message: `Do you need flow for type checking? (No)`,
     }]).then(props => {
       this.props = Object.assign(this.props, props);
       this.props.ccname = this._camelCase(this.props.name);
@@ -200,20 +200,27 @@ module.exports = generator.Base.extend({
         `.travis.yml`
       ];
 
-      const flow = [
-        `.flowconfig`
-      ];
-
-      const files = [
+      let files = [
         ...eslint,
         ...git,
         ...babel,
         ...rollup,
         ...editor,
         ...npm,
-        ...ci,
-        ...flow
+        ...ci
       ];
+
+      if (this.props.flow) {
+
+        const flow = [
+          `.flowconfig`
+        ];
+
+        files = [
+          ...files,
+          ...flow
+        ];
+      }
 
       files.forEach(f => this._copyFile(f));
 

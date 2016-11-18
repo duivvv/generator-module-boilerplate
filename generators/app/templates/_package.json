@@ -35,7 +35,8 @@
 
     "release": "release-it",
 
-    "lint": "eslint src/*.js <% if (flow) {%>&& npm run lint:flow<% } %>",
+    "lint": "npm run lint:eslint<% if (flow) {%> && npm run lint:flow<% } %>",
+    "lint:eslint": "eslint src/*.js",
     <% if(flow) {%>"lint:flow": "flow --color always",<% } %>
     "lint:build": "npm run lint && npm run build:cjs -s",
     "lint:build:test": "npm run lint:build && npm run test:coverage",
