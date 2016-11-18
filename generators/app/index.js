@@ -78,6 +78,7 @@ module.exports = generator.Base.extend({
 
     this.props = {
       yarn: true,
+      flow: false,
       license: `MIT`,
       year: new Date().getFullYear()
     };
@@ -138,6 +139,11 @@ module.exports = generator.Base.extend({
       type: `input`,
       name: `github`,
       message: `Github Username`,
+    }, {
+      type: `confirm`,
+      name: `flow`,
+      default: false,
+      message: `Do you need flow for type checking?`,
     }]).then(props => {
       this.props = Object.assign(this.props, props);
       this.props.ccname = this._camelCase(this.props.name);
@@ -194,6 +200,10 @@ module.exports = generator.Base.extend({
         `.travis.yml`
       ];
 
+      const flow = [
+        `.flowconfig`
+      ];
+
       const files = [
         ...eslint,
         ...git,
@@ -201,7 +211,8 @@ module.exports = generator.Base.extend({
         ...rollup,
         ...editor,
         ...npm,
-        ...ci
+        ...ci,
+        ...flow
       ];
 
       files.forEach(f => this._copyFile(f));
