@@ -1,6 +1,6 @@
 # <%= name %>
 
-<%= description %>
+> <%= description %>
 
 [![NPM](https://img.shields.io/npm/v/<%= name %>.svg?style=flat-square)](https://www.npmjs.com/package/<%= name %>)
 [![David](https://img.shields.io/david/<%= github %>/<%= name %>.svg?style=flat-square)](https://david-dm.org/<%= github %>/<%= name %>)

@@ -2,5 +2,15 @@
   "commitMessage": ":bookmark: v%s",
   "tagName": "v%s",
   "prereleaseId": "beta",
-  "tagAnnotation": "Version %s"
+  "tagAnnotation": "Version %s",
+  "changelogCommand": "git log --pretty=format:'* %s (%h)' v[REV_RANGE]",
+  "src": {
+    "pushRepo": "https://github.com/<%= github %>/<%= name %>"
+  },
+  "dist": {
+    "repo": false
+  },
+  "npm": {
+    "publish": true
+  }
 }
