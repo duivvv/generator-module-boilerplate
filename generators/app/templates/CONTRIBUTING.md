@@ -17,6 +17,9 @@ Feature or enhancement requests should be **submitted** in the
 
 You can **request** a feature by **writing a pull request**, but this is **no guarantee** it will be **merged**.
 
+## 'help wanted' label
+
+There are issues marked with the **['help wanted'](https://github.com/<%= github %>/<%= name %>/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)** label. <br/>This is a perfect start if you want to help out with the further development of <%= name %>.
 
 ## Pull Requests (PR)
 

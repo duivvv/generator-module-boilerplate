@@ -1,6 +1,6 @@
 {
   "name": "generator-module-boilerplate",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "npm module (UMD, CJS, ES6) boilerplate generator",
   "license": "MIT",
   "main": "generators/app/index.js",
