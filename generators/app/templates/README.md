@@ -4,8 +4,8 @@
 
 [![NPM](https://img.shields.io/npm/v/<%= name %>.svg?style=flat-square)](https://www.npmjs.com/package/<%= name %>)
 [![David](https://img.shields.io/david/<%= github %>/<%= name %>.svg?style=flat-square)](https://david-dm.org/<%= github %>/<%= name %>)
-[![Travis](https://img.shields.io/travis/<%= github %>/<%= name %>/master.svg?style=flat-square)](https://travis-ci.org/<%= github %>/<%= name %>)
-[![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.carloscuesta.me/)
+[![Travis](https://img.shields.io/travis/<%= github %>/<%= name %>/master.svg?style=flat-square)](https://travis-ci.org/<%= github %>/<%= name %>)<% if (gitmoji) { %>
+[![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.carloscuesta.me/)<% } %>
 
 ### Installation
 
@@ -36,7 +36,7 @@ import <%= ccname %> from '<%= name %>';
 
 ### configuration
 
-You can pass in extra options as a configuration object (➕ required, ➖ optional, ✏️ default)
+You can pass in extra options as a configuration object (➕ required, ➖ optional, ✏️ default).
 
 ```js
 
@@ -62,12 +62,16 @@ import <%= ccname %> from '<%= name %>';
 
 ### Examples
 
-see [`example`](example/script.js) folder or the [runkit](https://runkit.com/<%= github %>/<%= name %>) example
+See [`example`](example/script.js) folder or the [runkit](https://runkit.com/<%= github %>/<%= name %>) example.
 
 ### License
 
-[<%= license %>](LICENSE)
+The code is available under the [<%= license %>](LICENSE) license.
+
+### Contributing
+
+We are open to contributions, see [CONTRIBUTING.md](CONTRIBUTING.md) for more info.
 
 ### Misc
 
-This module was created using [generator-module-boilerplate](https://github.com/duivvv/generator-module-boilerplate)
+This module was created using [generator-module-boilerplate](https://github.com/duivvv/generator-module-boilerplate).

@@ -80,6 +80,7 @@ module.exports = generator.Base.extend({
       yarn: true,
       flow: false,
       license: `MIT`,
+      gitmoji: true,
       year: new Date().getFullYear()
     };
 
@@ -143,7 +144,12 @@ module.exports = generator.Base.extend({
       type: `confirm`,
       name: `flow`,
       default: false,
-      message: `Do you need flow for type checking? (No)`,
+      message: `Do you need Flow for type checking? (No)`,
+    }, {
+      type: `confirm`,
+      name: `gitmoji`,
+      default: false,
+      message: `Are you using Gitmoji in your commits? (No)`,
     }]).then(props => {
       this.props = Object.assign(this.props, props);
       this.props.ccname = this._camelCase(this.props.name);
@@ -174,13 +180,15 @@ module.exports = generator.Base.extend({
       ];
 
       const git = [
-        {from: `licences/${this.props.license}`, to: `LICENSE`},
         `README.md`,
+        {from: `licences/${this.props.license}`, to: `LICENSE`},
         {from: `_gitignore`, to: `.gitignore`}
       ];
 
       const github = [
-        `CONTRIBUTING.md`
+        `CONTRIBUTING.md`,
+        `.github/ISSUE_TEMPLATE.md`,
+        `.github/PULL_REQUEST_TEMPLATE.md`
       ];
 
       const babel = [

@@ -3,19 +3,20 @@
 [![npm version](https://badge.fury.io/js/generator-module-boilerplate.svg)](https://badge.fury.io/js/generator-module-boilerplate)
 [![David](https://img.shields.io/david/duivvv/generator-module-boilerplate.svg?style=flat-square)](https://david-dm.org/duivvv/generator-module-boilerplate)
 
-> This generator generates a (universal) npm module boilerplate
+> ⚙️ This generator generates a (universal) npm module boilerplate
 
 ## What does module-boilerplate offer?
 
 - **Project structure** to create a cross build npm module
 - **Linting**: via [ESLint](http://eslint.org/)
-- **Testing**: interactive watch and/or with Coverage via [Jest](https://facebook.github.io/jest/)
+- **Testing**: with Coverage via [Jest](https://facebook.github.io/jest/)
 - **[CommonJS](http://webpack.github.io/docs/commonjs.html)**: build (`/cjs`)  via [Babel](https://babeljs.io/)
 - **[ES2015](http://www.2ality.com/2014/09/es6-modules-final.html)**: build (`/es`) via [Babel](https://babeljs.io/)
 - **[UMD](https://github.com/umdjs/umd)** build: (`/dist`) via [Rollup](http://rollupjs.org/) (unminified & minified version)
-- **Watch scripts**: (build and/or test) `npm run build:(test|build)`
-- **Git hooks**: pre-commit, pre-push defined in `package.json`
-- **prepublish** script `npm run build`
+- **Watch scripts**: `npm run (test|build):watch`
+- **Git hooks**: pre-commit, pre-push hooks defined in `package.json`
+- **prepublish** (before publishing to npm) script `npm run build`
+- Only **publish what's needed** (`files` field in `package.json`)
 
 ## Nice to haves
 
@@ -23,6 +24,7 @@
 - ... with [npm](https://www.npmjs.com/), [Travis](https://travis-ci.org/), [David](https://david-dm.org/), [Gitmoji](https://gitmoji.carloscuesta.me/) **badges** :chart_with_upwards_trend:
 - **License** generation
 - **[Travis CI](https://travis-ci.org/)** integration :construction_worker:
+- **Typechecking**: via **[Flow](https://flowtype.org/)** (optional)
 - **[webpro/release-it](https://github.com/webpro/release-it)** integration
 - **Optimized** for [modern bundlers](https://github.com/rollup/rollup/wiki/jsnext:main)
 - **[unpkg](https://unpkg.com/)** ready 😎
@@ -71,7 +73,7 @@ npm run test:watch
 
 Build watch script:
 
-1. **Linting** via [ESLint](http://eslint.org/)
+1. **Linting** via [ESLint](http://eslint.org/) (+ optional [Flow](https://flowtype.org/) typechecking)
 2. **[CommonJS](http://webpack.github.io/docs/commonjs.html) build** (`/cjs`) via [Babel](https://babeljs.io/)
 
 ```console
@@ -88,7 +90,7 @@ npm run build
 ```
 The build command runs the following steps:
 
-1. **Linting** via [ESLint](http://eslint.org/)
+1. **Linting** via [ESLint](http://eslint.org/) (+ optional [Flow](https://flowtype.org/) typechecking)
 2. **[CommonJS](http://webpack.github.io/docs/commonjs.html) build** (`/cjs`)  via [Babel](https://babeljs.io/)
 3. **Testing** with Coverage via [Jest](https://facebook.github.io/jest/)
 4. **[ES2015](http://www.2ality.com/2014/09/es6-modules-final.html) build** (`/es`) via [Babel](https://babeljs.io/)
@@ -105,7 +107,7 @@ which equals to:
 
 ### testing :white_check_mark:
 
-[Jest](https://facebook.github.io/jest/) tests the [CommonJS](http://webpack.github.io/docs/commonjs.html) build folder (`/cjs`) for fast iteration
+[Jest](https://facebook.github.io/jest/) tests the [CommonJS](http://webpack.github.io/docs/commonjs.html) build (`/cjs`) for fast iteration
 
 ```console
 npm run test
@@ -121,7 +123,7 @@ npm run test:coverage
 
 
 ℹ️ more info on [webpro/release-it](https://github.com/webpro/release-it)
-ℹ️ premajor = x.x.x-beta.x
+<br/> ℹ️ premajor = x.x.x-beta.x
 
 ```console
 npm run release (premajor|patch|minor|major)
@@ -144,11 +146,11 @@ There are 2 git hooks defined in in `package.json`
 
 `pre-push` and `pre-commit` trigger:
 
-1. Linting via [ESLint](http://eslint.org/)
+1. Linting via [ESLint](http://eslint.org/) (+ optional [Flow](https://flowtype.org/) typechecking)
 2. [CommonJS](http://webpack.github.io/docs/commonjs.html) build (`/cjs`)  via [Babel](https://babeljs.io/)
 3. Testing via [Jest](https://facebook.github.io/jest/)
 
 
 ## License
 
-MIT
+The code is available under the [MIT](LICENSE) license.
