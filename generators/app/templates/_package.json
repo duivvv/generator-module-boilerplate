@@ -12,6 +12,9 @@
     "es",
     "src"
   ],
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "watch": {
     "lint:build": {
       "patterns": "src",
