@@ -3,6 +3,9 @@
     ["transform-flow-strip-types"]
   ],<% } %>
   "env": {
+    "test": {
+      "presets": ["es2015"]
+    },
     "cjs": {
       "presets": [
         ["es2015", {"loose": true}]
