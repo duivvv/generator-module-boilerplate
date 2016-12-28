@@ -4,7 +4,12 @@
   ],<% } %>
   "env": {
     "test": {
-      "presets": ["es2015"]
+      "presets": [
+        ["es2015", {"loose": true}]
+      ],
+      "plugins": [
+        ["add-module-exports"]
+      ]
     },
     "cjs": {
       "presets": [

@@ -30,6 +30,10 @@ module.exports = generator.Base.extend({
     return value.charAt(0).toUpperCase() + value.slice(1);
   },
 
+  _hyphenate(name) {
+    return name.split(` `).join(`-`);
+  },
+
   _camelCase(name) {
 
     return name.split(`-`).map((s, i) => {
@@ -100,7 +104,7 @@ module.exports = generator.Base.extend({
       type: `input`,
       name: `name`,
       message: `Module Name`,
-      default: this.appname
+      default: this._hyphenate(this.appname)
     }, {
       type: `rawlist`,
       name: `license`,
@@ -250,6 +254,12 @@ module.exports = generator.Base.extend({
 
     if (this.props.yarn) this._spawn(`yarn`);
     else this._spawn(`npm install`);
+
+    this._spawn(`git add .`);
+    const emoji = this.props.gitmoji ? `:tada: ` : ``;
+    spawn(`git`, [`commit`, `-m`, `${emoji}initial commit`], {stdio: `inherit`});
+
+    if (this.props.yarn) this._spawn(`node node_modules/husky/bin/install`); // see husky readme.
 
     this._clearConsole();
 
