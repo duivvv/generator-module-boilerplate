@@ -6,7 +6,7 @@
 [![NPM](https://img.shields.io/npm/v/<%= name %>.svg?style=flat-square)](https://www.npmjs.com/package/<%= name %>)
 [![Travis](https://img.shields.io/travis/<%= github %>/<%= name %>/master.svg?style=flat-square)](https://travis-ci.org/<%= github %>/<%= name %>)
 [![David](https://img.shields.io/david/<%= github %>/<%= name %>.svg?style=flat-square)](https://david-dm.org/<%= github %>/<%= name %>)
-[![Coverage Status](https://coveralls.io/repos/<%= github %>/<%= name %>/badge.svg?branch=master)](https://coveralls.io/r/<%= github %>/<%= name %>?branch=master)
+[![Coverage Status](https://img.shields.io/coveralls/<%= github %>/<%= name %>.svg?style=flat-square)](https://coveralls.io/github/<%= github %>/<%= name %>)
 <% if (gitmoji) { %>
 [![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.carloscuesta.me/)<% } %>
 
