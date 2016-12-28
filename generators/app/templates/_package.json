@@ -1,6 +1,6 @@
 {
   "name": "<%= name %>",
-  "version": "1.0.0-beta.1",
+  "version": "0.1.0",
   "description": "<%= description %>",
   "main": "cjs/index.js",
   "browser": "dist/<%= ccname %>.js",
@@ -15,42 +15,29 @@
   "engines": {
     "node": ">=4.0.0"
   },
-  "watch": {
-    "lint:build": {
-      "patterns": "src",
-      "extensions": "js",
-      "quiet": true,
-      "inherit": true
-    }
-  },
-  "config": {
-    "ghooks": {
-      "pre-commit": "npm run lint:build:test",
-      "pre-push": "npm run lint:build:test"
-    }
-  },
   "scripts": {
 
     "prepublish": "npm run build",
+    "precommit": "npm run lint:test",
+    "prepush": "npm run lint:test",
 
     "release": "release-it",
 
     "lint": "npm run lint:eslint<% if (flow) {%> && npm run lint:flow<% } %>",
     "lint:eslint": "eslint src/*.js",
     <% if(flow) {%>"lint:flow": "flow --color always",<% } %>
-    "lint:build": "npm run lint && npm run build:cjs -s",
-    "lint:build:test": "npm run lint:build && npm run test:coverage",
 
     "test": "clear && jest",
-    "test:watch": "clear && jest --watch",
     "test:coverage": "jest --coverage ",
+    "test:watch": "clear && jest --watch",
 
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "coverage": "jest --coverage ",
 
-    "build": "clear && npm run lint:build:test && npm run build:es && npm run build:umd",
+    "lint:test": "npm run lint && npm run test:coverage",
 
-    "build:watch": "clear && npm-watch",
+    "build": "clear && npm run lint:test && npm run build:cjs && npm run build:es && npm run build:umd",
+    "build:watch": "clear && rimraf cjs && cross-env BABEL_ENV=cjs babel -w src --out-dir cjs",
 
     "build:es": "rimraf es && cross-env BABEL_ENV=es babel src --out-dir es",
     "build:cjs": "rimraf cjs && cross-env BABEL_ENV=cjs babel src --out-dir cjs",
@@ -69,16 +56,15 @@
     "babel-preset-es2015": "^6.16.0",
     "coveralls": "^2.11.15",
     "cross-env": "^3.1.3",
-    "eslint": "^3.7.1",
-    "eslint-config-devine": "^1.5.0",
-    "eslint-plugin-babel": "^3.3.0",
-    <% if(flow) { %>"flow-bin": "^0.35.0",<% } %>
-    "jest": "^16.0.1",
+    "eslint": "^3.12.0",
+    "eslint-config-devine": "^1.6.1",
+    "eslint-plugin-babel": "^4.0.0",
+    <% if(flow) { %>"flow-bin": "^0.37.0",<% } %>
+    "jest": "^17.0.0",
     "rimraf": "^2.5.4",
     "release-it": "^2.5.1",
-    "npm-watch": "^0.1.6",
-    "ghooks": "^1.3.2",
-    "rollup": "^0.36.1",
+    "husky": "^0.12.0",
+    "rollup": "^0.38.0",
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-bundle-size": "^1.0.1",

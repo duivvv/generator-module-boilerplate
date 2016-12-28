@@ -14,7 +14,7 @@
 - **[ES2015](http://www.2ality.com/2014/09/es6-modules-final.html)**: build (`/es`) via [Babel](https://babeljs.io/)
 - **[UMD](https://github.com/umdjs/umd)** build: (`/dist`) via [Rollup](http://rollupjs.org/) (unminified & minified version)
 - **Watch scripts**: `npm run (test|build):watch`
-- **Git hooks**: pre-commit, pre-push hooks defined in `package.json`
+- **Git hooks**: precommit, prepush hooks defined in `package.json`
 - **prepublish** (before publishing to npm) script `npm run build`
 - Only **publish what's needed** (`files` field in `package.json`)
 
@@ -71,10 +71,7 @@ Testing via [Jest](https://facebook.github.io/jest/) in [interactive watch mode]
 npm run test:watch
 ```
 
-Build watch script:
-
-1. **Linting** via [ESLint](http://eslint.org/) (+ optional [Flow](https://flowtype.org/) typechecking)
-2. **[CommonJS](http://webpack.github.io/docs/commonjs.html) build** (`/cjs`) via [Babel](https://babeljs.io/)
+**[CommonJS](http://webpack.github.io/docs/commonjs.html) build** (`/cjs`) via [Babel](https://babeljs.io/)
 
 ```console
 npm run build:watch
@@ -91,29 +88,29 @@ npm run build
 The build command runs the following steps:
 
 1. **Linting** via [ESLint](http://eslint.org/) (+ optional [Flow](https://flowtype.org/) typechecking)
-2. **[CommonJS](http://webpack.github.io/docs/commonjs.html) build** (`/cjs`)  via [Babel](https://babeljs.io/)
-3. **Testing** with Coverage via [Jest](https://facebook.github.io/jest/)
-4. **[ES2015](http://www.2ality.com/2014/09/es6-modules-final.html) build** (`/es`) via [Babel](https://babeljs.io/)
-5. **[UMD](https://github.com/umdjs/umd) builds** (`/dist`) via [Rollup](http://rollupjs.org/)
+3. **Testing** (with Coverage) via [Jest](https://facebook.github.io/jest/)
+4. **[CommonJS](http://webpack.github.io/docs/commonjs.html) build** (`/cjs`)  via [Babel](https://babeljs.io/)
+5. **[ES2015](http://www.2ality.com/2014/09/es6-modules-final.html) build** (`/es`) via [Babel](https://babeljs.io/)
+6. **[UMD](https://github.com/umdjs/umd) builds** (`/dist`) via [Rollup](http://rollupjs.org/)
 
 which equals to:
 
 1. `npm run lint`
-2. `npm run build:cjs`
 3. `npm run test:coverage`
+2. `npm run build:cjs`
 4. `npm run build:es`
 5. `npm run build:umd`
 
 
 ### testing :white_check_mark:
 
-[Jest](https://facebook.github.io/jest/) tests the [CommonJS](http://webpack.github.io/docs/commonjs.html) build (`/cjs`) for fast iteration
+Tests your `src` folder via [Jest](https://facebook.github.io/jest/), (test env is included in `.babelrc`)
 
 ```console
 npm run test
 ```
 
-or with coverage (used in the git hooks and prepublish)
+or with coverage (also used in precommit / prepush / prepublish)
 
 ```console
 npm run test:coverage
@@ -124,6 +121,9 @@ npm run test:coverage
 
 ℹ️ more info on [webpro/release-it](https://github.com/webpro/release-it)
 <br/> ℹ️ premajor = x.x.x-beta.x
+
+ℹ️ the generated package.json starts with 0.1.0
+<br/>⚠️ watch out, semver has different rules pre 1.0.0
 
 ```console
 npm run release (premajor|patch|minor|major)
@@ -141,14 +141,13 @@ You can change the release settings in the `.release.json` file in the root of y
 
 ## Git Hooks ⛏
 
-There are 2 git hooks defined in in `package.json`
-<br/>to check for **broken builds** and **preventing push or commit**.
+There are 2 git hooks defined in `scripts` in `package.json`
+<br/>they check for **broken builds** and **prevent push or commit**.
 
-`pre-push` and `pre-commit` trigger:
+`prepush` and `precommit` trigger:
 
 1. Linting via [ESLint](http://eslint.org/) (+ optional [Flow](https://flowtype.org/) typechecking)
-2. [CommonJS](http://webpack.github.io/docs/commonjs.html) build (`/cjs`)  via [Babel](https://babeljs.io/)
-3. Testing via [Jest](https://facebook.github.io/jest/)
+2. Testing via [Jest](https://facebook.github.io/jest/)
 
 
 ## License
