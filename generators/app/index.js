@@ -251,6 +251,7 @@ module.exports = generator.Base.extend({
 
     this._spawn(`git init`);
     this._spawn(`git remote add origin https://github.com/${github}/${name}.git`);
+    this._spawn(`git branch --set-upstream-to=origin/master master`);
 
     if (this.props.yarn) this._spawn(`yarn`);
     else this._spawn(`npm install`);
