@@ -1,7 +1,7 @@
 import babel from 'rollup-plugin-babel';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import uglify from 'rollup-plugin-uglify';
-import bundleSize from 'rollup-plugin-bundle-size';
+import filesize from 'rollup-plugin-filesize';
 import commonjs from 'rollup-plugin-commonjs';
 
 const name = `<%= ccname %>`;
@@ -15,16 +15,18 @@ const plugins = [
   commonjs({
     include: `node_modules/**`
   }),
-  bundleSize()
+  filesize()
 ];
 
 const isProd = process.env.NODE_ENV === `production`;
 if (isProd) plugins.push(uglify());
 
 export default {
-  entry: `src/index.js`,
+  input: `src/index.js`,
   plugins,
-  dest: `dist/umd/${name}${isProd ? `.min` : ``}.js`,
-  moduleName: name,
-  format: `umd`
+  output: {
+    file: `dist/${name}${isProd ? `.min` : ``}.js`,
+    name: name,
+    format: `umd`
+  }
 };
