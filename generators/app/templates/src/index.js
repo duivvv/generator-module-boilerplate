@@ -1,3 +1,3 @@
 export default () => {
-  console.log(`hello module`);
+  return `hello world`;
 };

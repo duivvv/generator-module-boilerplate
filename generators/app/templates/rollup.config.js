@@ -24,7 +24,7 @@ if (isProd) plugins.push(uglify());
 export default {
   entry: `src/index.js`,
   plugins,
-  dest: `dist/${name}${isProd ? `.min` : ``}.js`,
+  dest: `dist/umd/${name}${isProd ? `.min` : ``}.js`,
   moduleName: name,
   format: `umd`
 };

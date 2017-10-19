@@ -11,14 +11,7 @@ const {
 
 const mkdir = require(`mkdirp`);
 
-let isFirstClear = true;
-
 module.exports = generator.Base.extend({
-
-  _clearConsole() {
-    process.stdout.write(isFirstClear ? `\x1bc` : `\x1b[2J\x1b[0f`);
-    isFirstClear = false;
-  },
 
   _getNPMConfig() {
     const author = exec(`npm config get init.author.name`, {encoding: `utf-8`}) || ``;
@@ -167,7 +160,8 @@ module.exports = generator.Base.extend({
 
       const files = [
         `example/script.js`,
-        `src/index.js`
+        `src/index.js`,
+        `__tests__/test.js`
       ];
 
       files.forEach(f => this._copyFile(f));
@@ -175,8 +169,6 @@ module.exports = generator.Base.extend({
     },
 
     settings() {
-
-      this._createDir(`__tests__`);
 
       const eslint = [
         `.eslintignore`,
@@ -251,6 +243,7 @@ module.exports = generator.Base.extend({
 
     this._spawn(`git init`);
     this._spawn(`git remote add origin https://github.com/${github}/${name}.git`);
+    this._spawn(`git branch --set-upstream-to=origin/master master`);
 
     if (this.props.yarn) this._spawn(`yarn`);
     else this._spawn(`npm install`);
@@ -260,8 +253,6 @@ module.exports = generator.Base.extend({
     spawn(`git`, [`commit`, `-m`, `${emoji}initial commit`], {stdio: `inherit`});
 
     if (this.props.yarn) this._spawn(`node node_modules/husky/bin/install`); // see husky readme.
-
-    this._clearConsole();
 
     init(this.props);
 

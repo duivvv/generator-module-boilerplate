@@ -10,9 +10,9 @@
 - **Project structure** to create a cross build npm module
 - **Linting**: via [ESLint](http://eslint.org/)
 - **Testing**: with Coverage via [Jest](https://facebook.github.io/jest/)
-- **[CommonJS](http://webpack.github.io/docs/commonjs.html)**: build (`/cjs`)  via [Babel](https://babeljs.io/)
-- **[ES2015](http://www.2ality.com/2014/09/es6-modules-final.html)**: build (`/es`) via [Babel](https://babeljs.io/)
-- **[UMD](https://github.com/umdjs/umd)** build: (`/dist`) via [Rollup](http://rollupjs.org/) (unminified & minified version)
+- **[CommonJS](http://webpack.github.io/docs/commonjs.html)**: build (`/dist/cjs`)  via [Babel](https://babeljs.io/)
+- **[ES2015](http://www.2ality.com/2014/09/es6-modules-final.html)**: build (`/dist/es`) via [Babel](https://babeljs.io/)
+- **[UMD](https://github.com/umdjs/umd)** build: (`/dist/umd`) via [Rollup](http://rollupjs.org/) (unminified & minified version)
 - **Watch scripts**: `npm run (test|build):watch`
 - **Git hooks**: precommit, prepush hooks defined in `package.json`
 - **prepublish** (before publishing to npm) script `npm run build`
@@ -24,6 +24,7 @@
 - ... with [npm](https://www.npmjs.com/), [Travis](https://travis-ci.org/), [David](https://david-dm.org/), [Gitmoji](https://gitmoji.carloscuesta.me/) **badges** :chart_with_upwards_trend:
 - **License** generation
 - **[Travis CI](https://travis-ci.org/)** integration :construction_worker:
+- **Coverage Reporting** via [Coveralls](https://coveralls.io/)
 - **Typechecking**: via **[Flow](https://flowtype.org/)** (optional)
 - **[webpro/release-it](https://github.com/webpro/release-it)** integration
 - **Optimized** for [modern bundlers](https://github.com/rollup/rollup/wiki/jsnext:main)
@@ -71,7 +72,7 @@ Testing via [Jest](https://facebook.github.io/jest/) in [interactive watch mode]
 npm run test:watch
 ```
 
-**[CommonJS](http://webpack.github.io/docs/commonjs.html) build** (`/cjs`) via [Babel](https://babeljs.io/)
+**[CommonJS](http://webpack.github.io/docs/commonjs.html) build** (`/dist/cjs`) via [Babel](https://babeljs.io/)
 
 ```console
 npm run build:watch
@@ -89,8 +90,8 @@ The build command runs the following steps:
 
 1. **Linting** via [ESLint](http://eslint.org/) (+ optional [Flow](https://flowtype.org/) typechecking)
 3. **Testing** (with Coverage) via [Jest](https://facebook.github.io/jest/)
-4. **[CommonJS](http://webpack.github.io/docs/commonjs.html) build** (`/cjs`)  via [Babel](https://babeljs.io/)
-5. **[ES2015](http://www.2ality.com/2014/09/es6-modules-final.html) build** (`/es`) via [Babel](https://babeljs.io/)
+4. **[CommonJS](http://webpack.github.io/docs/commonjs.html) build** (`/dist/cjs`)  via [Babel](https://babeljs.io/)
+5. **[ES2015](http://www.2ality.com/2014/09/es6-modules-final.html) build** (`/dist/es`) via [Babel](https://babeljs.io/)
 6. **[UMD](https://github.com/umdjs/umd) builds** (`/dist`) via [Rollup](http://rollupjs.org/)
 
 which equals to:
@@ -122,7 +123,6 @@ npm run test:coverage
 ℹ️ more info on [webpro/release-it](https://github.com/webpro/release-it)
 <br/> ℹ️ premajor = x.x.x-beta.x
 
-ℹ️ the generated package.json starts with 0.1.0
 <br/>⚠️ watch out, semver has different rules pre 1.0.0
 
 ```console
