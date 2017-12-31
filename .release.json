@@ -1,6 +1,8 @@
 {
-  "commitMessage": ":bookmark: v%s",
-  "tagName": "v%s",
+  "src": {
+    "commitMessage": ":bookmark: v%s",
+    "tagName": "v%s",
+    "tagAnnotation": "Version %s"
+  },
   "prereleaseId": "beta",
-  "tagAnnotation": "Version %s"
 }
